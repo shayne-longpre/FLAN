@@ -137,6 +137,7 @@ DIALOG_II_TASK_CONFIGS["qrecc" +
                        "_input_inversion"] = DIALOG_TASK_CONFIGS["qrecc"]
 
 # ========================= T0 (P3) Training Sets ===========================
+counter = 0
 for task_name in constants_t0.T0_TRAIN_TASK_SPLITS:
   subtask_id = task_name.split(":")[-1]
   if constants_t0.T0_TRAIN_TASK_METADATA[task_name]["in_flan"]:
@@ -170,6 +171,9 @@ for task_name in constants_t0.T0_TRAIN_TASK_SPLITS:
       postprocess_fn=postprocessors,
       metric_fns=[t5_metrics.accuracy],
   )
+  counter += 1
+  if counter == 2:
+    break
 
 # ====================== Natural Instructions v2.5 ======================
 # Prepare lookup table for positive example info

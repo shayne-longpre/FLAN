@@ -1,5 +1,5 @@
 tfds_nightly
 frozendict
-datasets
+datasets==2.7
 seqio
 t5
